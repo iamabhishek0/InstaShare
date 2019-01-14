@@ -1,0 +1,16 @@
+body{
+    background: whitesmoke url("images/background.jpg");
+   background-size: 100% ;
+
+}
+
+.navbar{
+    border-radius: 0;
+}
+
+.navbar-brand {
+    font-family: 'Permanent Marker', cursive;
+
+}
+
+.
