@@ -1,0 +1,62 @@
+
+{% extends 'posts/base.html' %}
+
+{% block title %}Post Detail{% endblock %}
+
+    <div class="single-blog-wrapper section-padding-0-100">
+
+        <!-- Single Blog Area  -->
+        <div class="single-blog-area blog-style-2 mb-50">
+            <div class="single-blog-thumbnail">
+                <img src="{{ post.post_image.url}}" alt="">
+                <div class="post-tag-content">
+                    <div class="container">
+                        <div class="row">
+                            <div class="col-12">
+                                <div class="post-date">
+                                    <a href="#"><span>{{ post.date }}</span></a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="container">
+            <div class="row">
+                <!-- ##### Post Content Area ##### -->
+                <div class="col-12 col-lg-9">
+                    <!-- Single Blog Area  -->
+                    <div class="single-blog-area blog-style-2 mb-50">
+                        <!-- Blog Content -->
+                        <div class="single-blog-content">
+                            <div class="line"></div>
+{#                            <a href="#" class="post-tag">Lifestyle</a>#}
+                            <h4><a href="#" class="post-headline mb-0">{{ post.title}}</a></h4>
+                            <div class="post-meta mb-50">
+                                <p>By <a href="#">{{ post.user }}</a></p>
+                                <p><a href="{% url 'post:post-update' post.id %}">Edit</a></p>&nbsp;&nbsp;
+{#                                <p><a href="{% url 'post:post-delete' post.id %}">Delete</a></p>#}
+                                <p>
+                                        <form action="{% url 'post:post-delete' post.id %}" method="post" style="display: inline;">
+                                            {% csrf_token %}
+                                            <input type="hidden" name="post_id" value="{{ post.id }}" />
+
+                                            <button type="submit" class="btn btn-default btn-sm">
+                                                <p><a>Delete</a><p>
+                                            </button>
+                                        </form>
+                                </p>
+                            </div>
+                            <p>{{ post.content}}</p>
+                        </div>
+                    </div>
+                    <div class="fb-like" data-href="{{ request.build_absolute_uri }}" data-layout="standard" data-action="like" data-size="small" data-show-faces="true" data-share="true"></div>
+                    <div class="fb-comments" data-href="{{ request.build_absolute_uri }}" data-numposts="5"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+{% endblock %}

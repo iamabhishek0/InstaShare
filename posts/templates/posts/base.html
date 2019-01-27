@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+
+  {% load staticfiles %}
+ <link href="https://fonts.googleapis.com/css?family=Permanent+Marker" rel="stylesheet" type='text/css'>
+
+
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+<link rel="stylesheet" href="../../static/blog/style1.css"/>
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+
+
+
+<meta charset="UTF-8">
+ <meta name="description" content="">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="icon" type="image/png" href="../../static/blog/images/icons/unnamed.png" />
+    <title>{% block title %}{% endblock %}</title>
+
+
+</head>
+<body>
+    <div id="preloader">
+        <div class="preload-content">
+            <div id="original-load"></div>
+        </div>
+    </div>
+
+<div id="fb-root"></div>
+<script>(function(d, s, id) {
+  var js, fjs = d.getElementsByTagName(s)[0];
+  if (d.getElementById(id)) return;
+  js = d.createElement(s); js.id = id;
+  js.src = 'https://connect.facebook.net/en_GB/sdk.js#xfbml=1&version=v3.2';
+  fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));</script>
+
+
+
+<header class="header-area">
+
+        <div class="original-nav-area" id="stickyNav">
+            <div class="classy-nav-container breakpoint-off">
+                <div class="container">
+                    <!-- Classy Menu -->
+                    <nav class="classy-navbar justify-content-between">
+                        <div>
+                            {% if user.is_authenticated %}
+                                <p>Hi {{ user.username }}!<a href="{% url 'logout' %}">&nbsp;&nbsp;<button class="btn btn-dark">Logout</button></a></p>
+
+                            {% else %}
+                                <p>You are not Logged In<a href="{% url 'login' %}">&nbsp;&nbsp<button class="btn btn-dark">Log In</button></a></p>
+                            {% endif %}
+                        </div>
+
+
+
+
+                        <!-- Navbar Toggler -->
+                        <div class="classy-navbar-toggler" >
+                            <span class="navbarToggler"><span></span><span></span><span></span></span>
+                        </div>
+
+                        <!-- Menu -->
+                        <div class="classy-menu" id="originalNav">
+                            <!-- close btn -->
+                            <div class="classycloseIcon">
+                                <div class="cross-wrap"><span class="top"></span><span class="bottom"></span></div>
+                            </div>
+
+                            <!-- Nav Start -->
+                            <div class="classynav">
+                                <ul>
+                                    <li><a href="{% url 'post:index' %}"><span>Home</span></a></li>
+                                    <li><a href="{% url 'post:post-add' %}">New Post</a></li>
+{#                                    <li><a href="#">Timeline</a>#}
+{#                                    </li>#}
+{#                                    <li><a href="{% url 'post:register' %}">Sign Up</a>#}
+{#                                    </li>#}
+                                    <li><a href="#">About Us</a></li>
+                                  
+                                    <li><a href="#">Contact</a></li>
+                                </ul>
+
+
+
+
+                                <!-- Search Form  -->
+                                <div id="search-wrapper">
+                                    <form action="#" role="search" method="GET">
+                                        <input type="text" id="search" placeholder="Search something..." name="q" value="{{ request.GET.q}}">
+                                        <div id="close-icon"></div>
+                                        <input class="d-none" type="submit" value="Search">
+                                    </form>
+                                </div>
+                            </div>
+                            <!-- Nav End -->
+                        </div>
+                    </nav>
+                </div>
+            </div>
+        </div>
+</header>
+    <!-- jQuery (Necessary for All JavaScript Plugins) -->
+    <script src="../../static/blog/js/jquery/jquery-2.2.4.min.js"></script>
+    <!-- Popper js -->
+    <script src="../../static/blog/js/popper.min.js"></script>
+    <!-- Bootstrap js -->
+    <script src="../../static/blog/js/bootstrap.min.js"></script>
+    <!-- Plugins js -->
+    <script src="../../static/blog/js/plugins.js"></script>
+    <!-- Active js -->
+    <script src="../../static/blog/js/active.js"></script>
+   {% block head %}
+  {% endblock %}
+  {% block body %}
+  {% endblock %}
+
+
+</body>
+</html>
