@@ -1,31 +1,24 @@
-from django.shortcuts import render
-from django.views import generic
-from django.views import generic
-from django.views.generic.edit import CreateView, UpdateView, DeleteView
-from django.urls import reverse_lazy
-from django.contrib.auth.forms import UserCreationForm
-from django.db.models import Q
-from django.core.paginator import Paginator
-from django.contrib.auth import login, authenticate
-from django.db.models import Q
-from django.shortcuts import render,redirect,HttpResponseRedirect
 
+from django.views import generic
+from django.contrib import messages
+from django.views.generic.edit import UpdateView, DeleteView
+from django.urls import reverse_lazy
+from django.core.paginator import Paginator
+from django.db.models import Q
 from django.shortcuts import render
 from django.contrib.auth.models import User
 from django.contrib.auth import authenticate, login
 from django.http import HttpResponseRedirect
 from django import forms
 from .forms import UserRegistrationForm,PostForm
+from .models import Post
 
 
-from .models import Post, User
 
-
-# from templates.posts import post_form.html
 
 def post_list(request):
 
-    blog_post = User.objects.all()
+    blog_post = Post.objects.all()
     query = request.GET.get("q")
     if query:
         blog_post = blog_post.filter(Q(title__icontains=query)|
@@ -44,35 +37,22 @@ class Detailview(generic.DetailView):
     template_name = 'posts/detail.html'
 
 
+def post_create(request):
 
 
-class PostCreate(CreateView):
+    form = PostForm(request.POST or None, request.FILES or None)
+    if form.is_valid():
+        instance = form.save(commit=False)
+        instance.user = request.user
+        instance.save()
 
-    # def get(self, request):
-    #     if not request.user.is_staff or not request.user.is_superuser:
-    #         raise Http404
-    #     return render(request,'posts/')
-    model = Post
-    fields = ['title', 'content', 'post_image']
-    # instance = form.save(commit=False)
-    # instance.user = request.user
-    # instance.save()
-    # template_name = 'blog/post_form.html'
+        messages.success(request, "Successfully Created")
+        return HttpResponseRedirect('/')
+    context = {
+        "form": form,
+    }
+    return render(request, "posts/post_form.html", context)
 
-    success_url = reverse_lazy('post:index')
-
-    # def get(self, request):
-    #     if not request.user.is_staff or not request.user.is_superuser:
-    #         raise Http404
-
-# def create(request):
-#     form = PostForm(request.POST or None)
-#     if form.is_valid():
-#         instance = form.save(commit=False)
-#         instance.user = request.user
-#         instance.save()
-#         return HttpResponseRedirect('/home')
-#     return render(request,'posts/create.html',{'form':form})
 
 class PostUpdate(UpdateView):
     model = Post
@@ -101,6 +81,8 @@ def register(request):
         form = UserRegistrationForm()
     return render(request, 'posts/register.html', {'form' : form})
 
+
+# ignore it
 
 from rest_framework.views import APIView
 from rest_framework.response import Response

@@ -6,7 +6,7 @@ from django.contrib.auth import views as auth_views
 
 
 from .views import (
-	post_list,
+	post_list,post_create
 
 	)
 from django.conf.urls import url
@@ -26,7 +26,7 @@ urlpatterns = [
 
     path('<int:pk>/', views.Detailview.as_view(), name = "detail"),
 
-    path('add/', login_required(views.PostCreate.as_view()), name='post-add'),
+    path('add/', login_required(post_create), name='post-add'),
 
     path('register/', views.register, name = 'register'),
 

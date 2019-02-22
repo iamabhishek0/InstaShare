@@ -31,6 +31,9 @@
         </div>
     </div>
 
+
+    {#Facebook Plugin#}
+
 <div id="fb-root"></div>
 <script>(function(d, s, id) {
   var js, fjs = d.getElementsByTagName(s)[0];
@@ -44,7 +47,8 @@
 
 <header class="header-area">
 
-        <div class="original-nav-area" id="stickyNav">
+    <div class="original-nav-area" id="stickyNav">
+
             <div class="classy-nav-container breakpoint-off">
                 <div class="container">
                     <!-- Classy Menu -->
@@ -78,13 +82,13 @@
                                 <ul>
                                     <li><a href="{% url 'post:index' %}"><span>Home</span></a></li>
                                     <li><a href="{% url 'post:post-add' %}">New Post</a></li>
-{#                                    <li><a href="#">Timeline</a>#}
-{#                                    </li>#}
-{#                                    <li><a href="{% url 'post:register' %}">Sign Up</a>#}
-{#                                    </li>#}
-                                    <li><a href="#">About Us</a></li>
-                                  
-                                    <li><a href="#">Contact</a></li>
+
+
+                                    <li><a href="{% url 'post:register' %}">Sign Up</a>
+                                    </li>
+
+
+
                                 </ul>
 
 

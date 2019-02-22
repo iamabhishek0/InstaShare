@@ -22,7 +22,7 @@
                                                 <div class="single-blog-thumbnail">
                                                     <img src="{{ post.post_image.url}}" alt=""/>
                                                         <div class="post-date">
-                                                            <a href="#">12 <span>march</span></a>
+                                                            <a href="#">{{ post.date|date:'d' }} <span>{{ post.date|date:'F' }}</span></a>
                                                         </div>
                                                 </div>
                                             </div>
@@ -79,33 +79,21 @@
                         <!-- Blog Content -->
                         <div class="single-blog-content">
                             <div class="line"></div>
-                            <a href="#" class="post-tag">Lifestyle</a>
-                            <h4><a href="#" class="post-headline">Welcome to this Lifestyle blog</a></h4>
-                            <p>Curabitur venenatis efficitur lorem sed tempor. Integer aliquet tempor cursus. Nullam vestibulum convallis risus vel condimentum. Nullam auctor lorem in libero luctus, vel volutpat quam tincidunt. Morbi sodales, dolor id ultricies dictum</p>
-                            <a href="#" class="btn original-btn">Read More</a>
+{#                            <a href="#" class="post-tag">Lifestyle</a>#}
+                            <h4><a href="#" class="post-headline">About InstaShare</a></h4>
+                            <p>Instashare is a blog that allows its users to post pictures taken by them, write the story the behind. it also allows its users to like,comment,share those pictures</p>
                         </div>
                     </div>
                 </div>
                 <!-- Single Blog Area -->
                 <div class="col-12 col-md-6 col-lg-4">
                     <div class="single-catagory-area clearfix mb-100">
-                        <img src="../../static/blog/img/blog-img/1.jpg" alt="">
-                        <!-- Catagory Title -->
-                        <div class="catagory-title">
-                            <a href="#">Lifestyle posts</a>
-                        </div>
+                        <img src="../../static/blog/images/Free_Sample_By_Wix%20(1).jpeg" alt="">
+
                     </div>
                 </div>
                 <!-- Single Blog Area -->
-                <div class="col-12 col-md-6 col-lg-4">
-                    <div class="single-catagory-area clearfix mb-100">
-                        <img src="../../static/blog/img/blog-img/2.jpg" alt="">
-                        <!-- Catagory Title -->
-                        <div class="catagory-title">
-                            <a href="#">latest posts</a>
-                        </div>
-                    </div>
-                </div>
+
 
             </div>
         </div>

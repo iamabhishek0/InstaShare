@@ -20,11 +20,19 @@ class UserRegistrationForm(forms.Form):
         widget = forms.PasswordInput()
     )
 
+
+from django import forms
+
+
+from .models import Post
+
+
 class PostForm(forms.ModelForm):
     class Meta:
         model = Post
-        fields = (
-            'title',
-            'content',
-            'post_image',
-        )
+        fields = [
+            "title",
+            "content",
+            "post_image",
+
+        ]

@@ -2,7 +2,7 @@
 {% extends 'posts/base.html' %}
 
 {% block title %}Post Detail{% endblock %}
-
+{% block head %}
     <div class="single-blog-wrapper section-padding-0-100">
 
         <!-- Single Blog Area  -->
@@ -14,7 +14,7 @@
                         <div class="row">
                             <div class="col-12">
                                 <div class="post-date">
-                                    <a href="#"><span>{{ post.date }}</span></a>
+                                    <a href="#">{{ post.date|date:'d' }} <span>{{ post.date|date:'F' }}</span></a>
                                 </div>
                             </div>
                         </div>
