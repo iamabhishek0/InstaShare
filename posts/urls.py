@@ -25,6 +25,7 @@ urlpatterns = [
     # path("", views.search(), name = "search"),
 
     path('<int:pk>/', views.Detailview.as_view(), name = "detail"),
+    path('<int:pk>/tag', views.tag, name = "tag"),
 
     path('add/', login_required(post_create), name='post-add'),
 

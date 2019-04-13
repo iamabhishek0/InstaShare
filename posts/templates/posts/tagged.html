@@ -1,0 +1,8 @@
+{% extends 'posts/base.html' %}
+
+{% block title %}Post Detail{% endblock %}
+{% block head %}
+<div>
+     <img src="{{ post.tagged_image.url}}" class="img-responsive" style="margin-left: 15%; margin-right: 15%; width: 75%; height: 75%; position: center" >
+</div>
+{% endblock %}
