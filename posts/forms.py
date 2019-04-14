@@ -36,3 +36,9 @@ class PostForm(forms.ModelForm):
             "post_image",
 
         ]
+
+# class want_to_tag(forms.ModelForm):
+#     class Meta:
+#         fields=[
+#             "want_to_tag"
+#         ]

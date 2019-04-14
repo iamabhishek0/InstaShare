@@ -27,7 +27,7 @@ def post_list(request):
     if query:
         blog_post = blog_post.filter(Q(title__icontains=query)|
                                     Q(content__icontains=query)).distinct()
-    paginator = Paginator(blog_post, 3)  # Show 25 contacts per page
+    paginator = Paginator(blog_post, 3)  # Show 3 posts per page
 
     page = request.GET.get('page')
     all_posts = paginator.get_page(page)
@@ -148,12 +148,12 @@ def tag(request,pk):
 
     def draw_rectangle(img, rect):
         (x, y, w, h) = rect
-        cv2.rectangle(img, (x, y), (x + w, y + h), (0, 255, 0), 2)
+        cv2.rectangle(img, (x, y), (x + w, y + h), (0, 0, 0), 2)
 
     # function to draw text on give image starting from
     # passed (x, y) coordinates.
     def draw_text(img, text, x, y):
-        cv2.putText(img, text, (x, y), cv2.FONT_HERSHEY_PLAIN, 1.5, (0, 255, 0), 2)
+        cv2.putText(img, text, (x, y), cv2.FONT_HERSHEY_PLAIN, 5, (0, 0, 0), 2)
 
     def predict(test_img):
         # make a copy of the image as we don't want to chang original image
@@ -220,6 +220,19 @@ def tag(request,pk):
     # cv2.waitKey(2)
     # cv2.destroyAllWindows()
     return render(request, 'posts/tagged.html',{'post':post})
+#
+def tag_confirmation (request,pk):
+    post = Post.objects.filter(pk=pk)
+    if 'True' in request.POST[]:
+        post.want_to_tag = True
+        post.save()
+    return render(request, 'posts/tagged.html', {'post': post})
+
+
+
+
+
+
 
 def post_create(request):
 
@@ -236,6 +249,8 @@ def post_create(request):
         "form": form,
     }
     return render(request, "posts/post_form.html", context)
+
+
 
 
 class PostUpdate(UpdateView):

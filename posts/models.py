@@ -17,6 +17,8 @@ class Post(models.Model):
     timestamp = models.DateTimeField(auto_now=False, auto_now_add= True)
     date = models.DateField(default=timezone.now)
     tagged_image=models.ImageField(blank=True,null=True)
+    tagging=models.TextField(blank=True)
+    want_to_tag=models.BooleanField(default=False)
 
 
 
