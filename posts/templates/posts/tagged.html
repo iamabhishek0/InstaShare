@@ -5,4 +5,6 @@
 <div>
      <img src="{{ post.tagged_image.url}}" class="img-responsive" style="margin-left: 15%; margin-right: 15%; width: 75%; height: 75%; position: center" >
 </div>
+<a href="{% url 'post:yes' post.id %}">Yes</a>
+<a href="{% url 'post:no' post.id %}">No</a>
 {% endblock %}

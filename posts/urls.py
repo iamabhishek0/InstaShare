@@ -26,7 +26,8 @@ urlpatterns = [
 
     path('<int:pk>/', views.Detailview.as_view(), name = "detail"),
     path('<int:pk>/tag', views.tag, name = "tag"),
-
+path('<int:pk>/yes', views.tagyes, name = "yes"),
+path('<int:pk>/no', views.tagno, name = "no"),
     path('add/', login_required(post_create), name='post-add'),
 
     path('register/', views.register, name = 'register'),

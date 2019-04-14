@@ -35,6 +35,9 @@
 {#                            <a href="#" class="post-tag">Lifestyle</a>#}
                             <h4><a href="#" class="post-headline mb-0">{{ post.title}}</a></h4>
                             <div class="post-meta mb-50">
+                                {% if post.want_to_tag  %}
+                                <h5>Tagged Name is {{post.tagging}}</h5>
+                                {% endif %}
                                 <p>By <a href="#">{{ post.user }}</a></p>
                                 <p><a href="{% url 'post:post-update' post.id %}">Edit</a></p>&nbsp;&nbsp;
                                 <p><a href="{% url 'post:tag' post.id %}">Tag</a></p>&nbsp;&nbsp;

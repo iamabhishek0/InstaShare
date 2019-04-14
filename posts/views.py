@@ -203,6 +203,7 @@ def tag(request,pk):
     # print(type(faces[0]))
     print('media/tag'+image_name[6:])
     post.tagged_image='tag'+image_name[6:]
+    post.tagging=l
     post.save()
 
     cv2.imwrite('media/tag'+image_name[6:], predicted_img1)
@@ -220,6 +221,17 @@ def tag(request,pk):
     # cv2.waitKey(2)
     # cv2.destroyAllWindows()
     return render(request, 'posts/tagged.html',{'post':post})
+def tagyes(request,pk):
+    post = Post.objects.filter(pk=pk)[0]
+    post.want_to_tag=True
+    post.save()
+    return render(request,'posts/detail.html',{'post':post})
+def tagno(request,pk):
+    post = Post.objects.filter(pk=pk)[0]
+    post.want_to_tag=False
+    post.save()
+    return render(request,'posts/detail.html',{'post':post})
+
 
 def post_create(request):
 
